@@ -19,5 +19,14 @@ const options = {
 
 // request
 const req = http.request(options, () => {
-    let data = 
+    let data = '';
+    console.log("Stataus Code: ", res.statusCode);
+
+    res.on('data', (chunk) => {
+        data += chunk;
+    })
+
+    res.on('end', () => {
+        console.log("Body: ", JSON.parse(data));
+    })
 })
