@@ -1,7 +1,7 @@
 
 
 
-const http = require("http");
+const axios = require("axios");
 
 const data = JSON.stringify({
     name: "John Doe",
@@ -17,16 +17,9 @@ const options = {
     }
 }
 
-// request
-const req = http.request(options, () => {
-    let data = '';
-    console.log("Stataus Code: ", res.statusCode);
-
-    res.on('data', (chunk) => {
-        data += chunk;
-    })
-
-    res.on('end', () => {
-        console.log("Body: ", JSON.parse(data));
-    })
+axios.post('https://reqres.in/api/users', data).then(res => {
+    console.log(`Status Code :${res.status}`);
+    console.log(`Body : ${res.data}`);
+}).catch(err => {
+    console.log();
 })
