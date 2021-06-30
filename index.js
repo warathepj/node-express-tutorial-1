@@ -2,20 +2,15 @@
 
 
 
+
 const fs = require("fs");
 
-fs.readFile("test.txt", 'utf8', (err, data) => {
-    if(err) throw err;
-    console.log(data);
-})
+const content = "Node Application";
 
-const data = fs.readFileSync('test.txt', {encoding:'utf-8', flag:'r'});
-console.log(data);
-
-fs.stat('test.txt', (err, stats) => {
+fs.writeFile('test.txt', content, { flag: 'a+' }, err => {
     if(err) {
-        console.error(err);
+        console.log(err);
         return
     }
-    console.log(stats.isFile());
-})
+    console.log("Successfully Done!");
+});
