@@ -3,14 +3,12 @@
 
 
 
+const http = require("http");
 const fs = require("fs");
 
-const content = "Node Application";
-
-fs.writeFile('test.txt', content, { flag: 'a+' }, err => {
-    if(err) {
-        console.log(err);
-        return
-    }
-    console.log("Successfully Done!");
-});
+const server = http.createServer(function(req, res) {
+    fs.readFile("test.json", (err, data) =>{
+        res.end(data);
+    })
+})
+server.listen(3000, () => {console.log("port 3000")});
