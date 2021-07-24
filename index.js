@@ -2,15 +2,10 @@
 
 
 
+const buf = Buffer.from("Hey");
 
-const http = require("http");
-const fs = require("fs");
+console.log(buf.toString());
 
-const server = http.createServer(function(req, res) {
-    const stream = fs.createReadStream("test.json");
-    stream.pipe(res);
-    // fs.readFile("test.json", (err, data) =>{
-    //     res.end(data);
-    // })
-})
-server.listen(3000, () => {console.log("port 3000")});
+console.log(buf[0]);
+console.log(buf[1]);
+console.log(buf[2]);
