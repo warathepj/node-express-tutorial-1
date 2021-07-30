@@ -2,12 +2,22 @@
 
 
 
-const buf = Buffer.alloc(4);
 
-buf.write("Hey!");
+doSomething1()
+    .then(() =>{
+        return doSomething2().catch(err => {
+            //handle error
+            throw err //break the chain
+        })
+    })
+    .then
 
-console.log(buf.toString());
 
-console.log(buf[0]);
-console.log(buf[1]);
-console.log(buf[2]);
+// try {
+//     console.log('Start try block');
+//     throw new Error('Error message');
+//     console.log('End try block');
+
+// } catch (err) {
+//     console.log('Error: ' + err);
+// }
